@@ -1,0 +1,66 @@
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 1rem;
+  }
+  
+  .navBrand a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+  
+  .hamburgerMenu {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .links {
+    list-style: none;
+  }
+  
+  .links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+  }
+  
+  .links a:hover {
+    background-color: #555;
+  }
+  
+  .show {
+    display: flex;
+  }
+
+  .searchFriends {
+    padding: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .hamburgerMenu {
+      display: block;
+    }
+  
+    .links {
+      display: contents;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #555;
+      width: 100%;
+    }
+  
+    .links a {
+      padding: 1rem;
+      border-bottom: 1px solid white;
+    }
+  
+    .show {
+      display: flex;
+    }
+  }

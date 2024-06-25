@@ -1,0 +1,31 @@
+ags-Container {
+    top: 50px;
+    position: sticky;
+    color: #FFF;
+    margin-top: 0px;
+    z-index: 500;
+}
+
+.Tag-Bar {
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: #000 0px -1px 0px -1px inset;
+    height: 40px;
+
+}
+
+Li.Tag-Item {
+    width: 100%;
+    display: flex;
+
+    justify-content: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+A,
+A:Visited,
+A:Link {
+    text-decoration: none;
+    color: white;
+}
