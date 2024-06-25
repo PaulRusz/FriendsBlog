@@ -49,4 +49,5 @@ postSchema.virtual('commentCount').get(function() {
 });
 
 const Post = model('Post', postSchema);
+
 module.exports = Post;
