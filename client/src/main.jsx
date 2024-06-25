@@ -7,6 +7,8 @@ import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Post from "./pages/Post";
 import Friends from "./pages/Friends";
+import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: "/friends",
         element: <Friends />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/logout",
+        element: <Logout />,
       },
     ],
   },

@@ -14,6 +14,11 @@ function NewPost() {
     setNewPostContent(e.target.value);
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedImage(file);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -22,6 +27,7 @@ function NewPost() {
       id: posts.length + 1,
       title: newPostTitle,
       content: newPostContent,
+      image: selectedImage,
     };
 
     // Update the posts state with the new post
@@ -30,6 +36,7 @@ function NewPost() {
     // Clear the input fields after submission
     setNewPostTitle("");
     setNewPostContent("");
+    setSelectedImage(null);
   };
 
   return (
@@ -43,6 +50,7 @@ function NewPost() {
         <h2>Create a New Post</h2>
         <form onSubmit={handleSubmit}>
           <input
+            className="titleContainer"
             type="text"
             placeholder="Enter Title"
             value={newPostTitle}
@@ -50,12 +58,24 @@ function NewPost() {
           />
 
           <textarea
+            className="contentContainer"
             placeholder="Enter Content"
             value={newPostContent}
             onChange={handleContentChange}
           ></textarea>
 
-          <button type="submit">Submit</button>
+          <input
+            className="imageUpload"
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+
+          <div></div>
+
+          <button className="submit" type="submit">
+            Submit
+          </button>
         </form>
       </div>
 
@@ -63,6 +83,9 @@ function NewPost() {
         <div key={post.id} className="post">
           <h2>{post.title}</h2>
           <p>{post.content}</p>
+          {post.image && (
+            <img src={URL.createObjectURL(post.image)} alt="Uploaded" />
+          )}
         </div>
       ))}
     </div>
