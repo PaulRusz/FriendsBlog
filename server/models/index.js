@@ -5,4 +5,6 @@ const Post = require("post.js");
 
 const User = require("user.js")
 
-module.exports = { Comments, Post, User };
+const Friend = require("friends.js")
+
+module.exports = { Comments, Post, User, Friend };
