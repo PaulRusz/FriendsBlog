@@ -9,7 +9,9 @@ const FriendsPage = () => {
     const retrieveFriends = async () => {
       try {
         // ADD API Endpoint
-        const response = await fetch("API_ENDPOINT_HERE");
+        const response = await fetch(
+          "API_ENDPOINT_HERE hhtps://api/example.com"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
