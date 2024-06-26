@@ -22,8 +22,6 @@ const userSchema = new Schema(
     avatar: {
       type: String,
       required: true,
-      enum: ['avatar1', 'avatar2', 'avatar3'],
-      default: 'avatar1',
     },
     userimage: {
       type: String, // Store the path to the uploaded image

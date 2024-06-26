@@ -16,7 +16,7 @@ const postSchema = new Schema(
       minlength: 1,
       maxlength: 300,
     },
-    posttag: {
+    postTag: {
       type: String,
       required: true,
       enum: ['tag1', 'tag2', 'tag3'],

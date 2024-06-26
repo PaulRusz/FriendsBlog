@@ -24,13 +24,13 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
-      const token = signToken(user);
-      return { token, user };
+      // const token = signToken(user);
+      return user;
     },
     addPost: async (parent, args) => {
       const post = await Post.create(args);
-      const token = signToken(post);
-      return { token, post };
+      // const token = signToken(post);
+      return post;
     },
     // Add other mutation resolvers here
   },
