@@ -14,7 +14,7 @@ function Profile() {
         <p>Joined: {user.createdAt}</p>
       </div>
 
-      <div className="blogContainer">
+      <div className="postContainer">
         <h2>My Posts</h2>
         <ul>{/* posts will go here */}</ul>
       </div>
