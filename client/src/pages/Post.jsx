@@ -5,6 +5,8 @@ function NewPost() {
   const [posts, setPosts] = useState([]);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostContent, setNewPostContent] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
 
   const handleTitleChange = (e) => {
     setNewPostTitle(e.target.value);
@@ -17,6 +19,13 @@ function NewPost() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setSelectedImage(file);
+    // Display image preview
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const imagePreview = event.target.result;
+      setPreviewImage(imagePreview);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = (e) => {
@@ -64,12 +73,17 @@ function NewPost() {
             onChange={handleContentChange}
           ></textarea>
 
-          <input
-            className="imageUpload"
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
+          <div className="imageUploadContainer">
+            <input
+              className="imageUpload"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+            {previewImage && (
+              <img className="imagePreview" src={previewImage} alt="Preview" />
+            )}
+          </div>
 
           <div></div>
 

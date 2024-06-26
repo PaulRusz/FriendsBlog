@@ -21,7 +21,15 @@ const SearchFriends = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        padding: "10px",
+        border: "1px solid #ccc",
+        borderRadius: "5px",
+        backgroundColor: "#f9f9f9",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+      }}
+    >
       <input
         type="text"
         placeholder="Search for Friends"
