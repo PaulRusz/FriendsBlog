@@ -3,7 +3,6 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
-    password: String
     avatar: String
     userimage: String
     posts: [Post]
@@ -16,7 +15,6 @@ const typeDefs = `
     postTitle: String
     postText: String
     username: User
-
   }
 
   type Query {
@@ -26,18 +24,16 @@ const typeDefs = `
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    addPost(postTitle: String!, postText: String!, postTag: String!, username: String!): Post
+    addUser(username: String!, email: String!, password: String!, avatar: String!): Auth
+    addPost(title: String!, content: String!): Post
     removeUser(username: String!): User
   }
 
-  type Auth {
-    username: User
-    email: String
-    password: String
-    avatar: String
-    
+ type Auth {
+    token: ID!
+    user: User
   }
 `;
 
 module.exports = typeDefs;
+

@@ -11,7 +11,7 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: true,
-      minlength: 8,
+      minlength: 4,
     },
     email: {
       type: String,
@@ -21,7 +21,7 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      required: true,
+      required: false,
     },
     userimage: {
       type: String, // Store the path to the uploaded image
