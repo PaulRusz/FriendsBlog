@@ -2,6 +2,9 @@ const { User, Post } = require('../models');
 
 const resolvers = {
   Query: {
+    all: async () => {
+      return await User.find({});
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
@@ -23,8 +26,10 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, args) => {
+      console.log(args);
       const user = await User.create(args);
       // const token = signToken(user);
+      console.log(user);
       return user;
     },
     addPost: async (parent, args) => {
@@ -33,6 +38,16 @@ const resolvers = {
       return post;
     },
 
+  //   update user
+    updateUser: async (parent, { _id, username, password, email, avatar }, context) => {
+      console.log(_id);
+      console.log(username)
+      return User.findOneAndUpdate(
+        { _id },
+        { username, password, email, avatar },
+        { new: true }
+      )
+  },
     // Add other mutation resolvers here
     updatePost: async (parent, { postId, postTitle, postText }, context) => {
         return Post.findOneAndUpdate(
