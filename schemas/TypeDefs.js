@@ -26,11 +26,13 @@ const typeDefs = `
     me: User
     userByUsername(username: String!): User
     post(_id: ID!): Post
+    all:[User]
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!, avatar: String!): Auth
+    addUser(username: String!, email: String!, password: String!, avatar: String!): User
     addPost(postTitle: String!, postText: String!, postTag: String!, username: String!): Post
+    updateUser(_id:String!, username: String!, email: String!, password: String!, avatar: String!): User
     removeUser(username: String!): User
     updatePost(postId: ID!, postTitle: String, postText: String): Post
     deletePost(postId: ID!): Post
