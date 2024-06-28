@@ -1,0 +1,21 @@
+{
+  "name": "friendsblog",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.2",
+    "@apollo/server": "^4.7.1",
+    "graphql": "^16.6.0",
+    "mongoose": "^8.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+
+
+}
