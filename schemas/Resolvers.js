@@ -62,13 +62,22 @@ const resolvers = {
     },
 
     likePost: async (parent, { postId, userId }, context) => {
-      const post = await Post.findById(postId)
+      const post = await Post.findById(postId);
       if (!post) {
-        throw new Error('Post not found')
+        throw new Error('Post not found');
       }
-      post.likes.push(userId)
-      await post.save()
-      return post
+      // Check if the likes array exists, if not, initialize it as an empty array
+      if (!post.likes) {
+        post.likes = [];
+      }
+      // Check if the user has already liked the post
+      if (post.likes.includes(userId)) {
+        throw new Error('User has already liked the post');
+      }
+      // Push the userId into the likes array
+      post.likes.push(userId);
+      await post.save();
+      return post;
     },
     // unlikePost: async (parent, { postId, userId }, context) => {
     //   const post = await Post.findById(postId)
@@ -80,17 +89,26 @@ const resolvers = {
     //       post.likes.splice(index, 1)
     //  },
     tagFriend: async (parent, { postId, friendUserName }, context) => {
-      const post = await Post.findById(postId)
+      const post = await Post.findById(postId);
       if (!post) {
-        throw new Error('Post not found')
+        throw new Error('Post not found');
       }
-      const friend = await User.findOne({ username: friendUserName })
+      const friend = await User.findOne({ username: friendUserName });
       if (!friend) {
-        throw new Error('Friend not found')
-    }
-      post.taggedFriends.push(friend.username)
-      await post.save()
-      return post
+        throw new Error('Friend not found');
+      }
+      // Check if the taggedFriends array exists, if not, initialize it as an empty array
+      if (!post.taggedFriends) {
+        post.taggedFriends = [];
+      }
+      // Check if the friend is already tagged in the post
+      if (post.taggedFriends.includes(friend.username)) {
+        throw new Error('Friend is already tagged in the post');
+      }
+      // Push the friend's username into the taggedFriends array
+      post.taggedFriends.push(friend.username);
+      await post.save();
+      return post;
     },
 
     addTagsToPost: async (parent, { postId, tags }, context) => {
