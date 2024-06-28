@@ -30,6 +30,12 @@ const postSchema = new Schema(
       default: Date.now,
       get: timestamp => dateFormat(timestamp)
     },
+    tags: [{ type: Schema.Types.ObjectId, ref: 'Tag' }], // Define tags as an array of ObjectIds referencing the 'Tag' model
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: timestamp => dateFormat(timestamp)
+    },
     username: {
       type: String,
       required: true
