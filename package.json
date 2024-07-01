@@ -10,6 +10,7 @@
         "seed": "cd server && npm run seed",
         "build": "cd client && npm run build",
         "render-build": "npm install && npm run build"
+        
     },
     "repository": {
         "type": "git",
