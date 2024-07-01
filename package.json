@@ -1,19 +1,25 @@
 {
-  "name": "friendsblog",
-  "version": "1.0.0",
-  "main": "server.js",
-  "dependencies": {
-    "express": "^4.19.2",
-    "@apollo/server": "^4.7.1",
-    "graphql": "^16.6.0",
-    "mongoose": "^7.0.2"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+    "name": "friendsblog",
+    "version": "1.0.0",
+    "description": "A social media blog to interact with friends!",
+    "main": "server.js",
+    "scripts": {
+        "start": "concurrently -k \"npm run start:backend\" \"npm run start:frontend\"",
+        "start:backend": "cd server/ && npm run start",
+        "start:frontend": "cd client/ && npm run dev"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PaulRusz/FriendsBlog.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/PaulRusz/FriendsBlog/issues"
+    },
+    "homepage": "https://github.com/PaulRusz/FriendsBlog#readme",
+    "dependencies": {
+        "concurrently": "^5.3.0"
+    }
 }
