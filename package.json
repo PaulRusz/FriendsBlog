@@ -7,7 +7,10 @@
         "start": "concurrently -k \"npm run start:backend\" \"npm run start:frontend\"",
         "start:backend": "cd server/ && npm run start",
         "start:frontend": "cd client/ && npm run dev",
-        "install": "cd server && npm i && cd ../client && npm i"
+        "install": "cd server && npm i && cd ../client && npm i",
+        "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
+        "build": "cd client && npm run build"
+
     },
     "repository": {
         "type": "git",
