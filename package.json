@@ -6,7 +6,8 @@
     "scripts": {
         "start": "concurrently -k \"npm run start:backend\" \"npm run start:frontend\"",
         "start:backend": "cd server/ && npm run start",
-        "start:frontend": "cd client/ && npm run dev"
+        "start:frontend": "cd client/ && npm run dev",
+        "install": "cd server && npm i && cd client && npm i"
     },
     "repository": {
         "type": "git",
