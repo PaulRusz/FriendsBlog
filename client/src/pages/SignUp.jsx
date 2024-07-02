@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useMutation } from '@apollo/client'
 
+import '../styles/SignUp.css'
 import { ADD_USER } from '../utils/mutations'
 import Auth from '../utils/auth'
 
@@ -14,7 +15,7 @@ const SignUp = () => {
         Password: '',
     });
 
-    const [AddUser, { Error, Data }] = useMutation(ADD_USER);
+    const [AddUser, { error, data }] = useMutation(ADD_USER);
 
     const HandleChange = (Event) => {
         const { name, value } = Event.target;
@@ -30,13 +31,13 @@ const SignUp = () => {
         console.log(FormState);
 
         try {
-            const { Data } = await AddUser({
+            const { data } = await AddUser({
                 variables: { ...FormState },
             });
 
-            Auth.Login(Data.AddUser.token);
-        } catch (Error) {
-            console.error(Error);
+            Auth.Login(data.AddUser.token);
+        } catch (error) {
+            console.error(error);
         }
     };
 
@@ -47,7 +48,7 @@ const SignUp = () => {
             </div>
             <br />
             <div className='Input-Container'>
-                {Data ? (
+                {data ? (
                     <p>
                         Success! You may now head{' '}
                         <Link to='/'>back to the homepage.</Link>
