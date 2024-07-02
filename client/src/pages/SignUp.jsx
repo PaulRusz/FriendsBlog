@@ -17,11 +17,11 @@ const SignUp = () => {
     const [AddUser, { Error, Data }] = useMutation(ADD_USER);
 
     const HandleChange = (Event) => {
-        const { Name, Value } = Event.target;
+        const { name, value } = Event.target;
 
         SetFormState({
             ...FormState,
-            [Name]: Value,
+            [name]: value,
         });
     };
 
