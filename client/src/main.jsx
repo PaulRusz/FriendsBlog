@@ -11,6 +11,7 @@ import Post from "../src/pages/Post.jsx";
 import Friends from "../src/pages/Friends.jsx";
 import Login from "../src/pages/Login.jsx";
 import Logout from "../src/pages/Logout.jsx";
+import SignUp from "./pages/SignUp.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         path: "/logout",
         element: <Logout />,
       },
+      {
+        path: "/signup",
+        element: <SignUp />
+      }
     ],
   },
 ]);
