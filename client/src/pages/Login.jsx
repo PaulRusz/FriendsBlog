@@ -79,7 +79,7 @@ const Login = (Props) => {
         <input
           className="Input-Button"
           type="button"
-          onClick={() => Navigate("/Sign-Up")}
+          onClick={() => Navigate("/SignUp")}
           value="Create New Account"
         />
       </div>
