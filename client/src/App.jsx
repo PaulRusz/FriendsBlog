@@ -1,8 +1,10 @@
 import "./App.css";
 import { Outlet } from "react-router-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "../src/components/Navbar";
+import Footer from "../src/components/Footer";
+import HomePage from "../src/pages/HomePage";
+// import Video from "./components/Video";
 
 const client = new ApolloClient({
   uri: "/graphql",
