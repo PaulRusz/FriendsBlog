@@ -5,25 +5,27 @@ import "../styles/Friends.css";
 const FriendsPage = () => {
   const [friends, setFriends] = useState([]);
 
-  useEffect(() => {
-    const retrieveFriends = async () => {
-      try {
-        // ADD API Endpoint
-        const response = await fetch(
-          "API_ENDPOINT_HERE hhtps://api/example.com"
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
-        const data = await response.json();
-        setFriends(data);
-      } catch (error) {
-        console.error("Error fetching friends:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const retrieveFriends = async () => {
+  //     try {
+  //       // ADD API Endpoint
+  //       const response = await fetch(
+  //         "API_ENDPOINT_HERE hhtps://api/example.com"
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch data");
+  //       }
+  //       const data = await response.json();
+  //       setFriends(data);
+  //     } catch (error) {
+  //       console.error("Error fetching friends:", error);
+  //     }
+  //   };
 
-    retrieveFriends();
-  }, []);
+  //   retrieveFriends();
+  // }, []);
+
+  console.log("this is friends array ==> ", friends)
 
   return (
     <div>

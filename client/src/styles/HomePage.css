@@ -1,0 +1,34 @@
+/* src/HomePage.css */
+.homepage {
+    font-family: Arial, sans-serif;
+  }
+  
+  .header-section {
+    background-color: #ff6f61;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .section {
+    padding: 20px;
+    margin: 10px 0;
+  }
+  
+  .section-one {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .section-two {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .body {
+    background-color: #ffeb3b;
+    color: #333;
+    padding: 20px;
+    margin: 10px 0;
+  }
+  
