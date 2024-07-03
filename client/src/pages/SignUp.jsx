@@ -8,14 +8,15 @@ import Auth from '../utils/auth'
 
 const SignUp = () => {
     const [FormState, SetFormState] = useState({
-        FirstName: '',
-        LastName: '',
-        Username: '',
-        Email: '',
-        Password: '',
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        password: '',
+        avatar: '',
     });
 
-    const [AddUser, { error, data }] = useMutation(ADD_USER);
+    const [addUser, { error, data }] = useMutation(ADD_USER);
 
     const HandleChange = (Event) => {
         const { name, value } = Event.target;
@@ -31,13 +32,13 @@ const SignUp = () => {
         console.log(FormState);
 
         try {
-            const { data } = await AddUser({
+            const { data } = await addUser({
                 variables: { ...FormState },
             });
 
-            Auth.Login(data.AddUser.token);
-        } catch (error) {
-            console.error(error);
+            Auth.Login(data.addUser.token);
+        } catch (e) {
+            console.error(e);
         }
     };
 
@@ -58,41 +59,41 @@ const SignUp = () => {
                         <input
                             className='Input-Item'
                             placeholder='First Name'
-                            name='FirstName'
+                            name='firstName'
                             type='text'
-                            value={FormState.FirstName}
+                            value={FormState.firstName}
                             onChange={HandleChange}
                         />
                         <input
                             className='Input-Item'
                             placeholder='Last Name'
-                            name='LastName'
+                            name='lastName'
                             type='text'
-                            value={FormState.LastName}
+                            value={FormState.lastName}
                             onChange={HandleChange}
                         />
                         <input
                             className='Input-Item'
                             placeholder='Username'
-                            name='Username'
+                            name='username'
                             type='text'
-                            value={FormState.Username}
+                            value={FormState.username}
                             onChange={HandleChange}
                         />
                         <input
                             className='Input-Item'
                             placeholder='Email'
-                            name='Email'
+                            name='email'
                             type='email'
-                            value={FormState.Email}
+                            value={FormState.email}
                             onChange={HandleChange}
                         />
                         <input
                             className='Input-Item'
                             placeholder='Password'
-                            name='Password'
+                            name='password'
                             type='password'
-                            value={FormState.Password}
+                            value={FormState.password}
                             onChange={HandleChange}
                         />
                         <button
