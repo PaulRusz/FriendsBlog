@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import SearchFriends from "./SearchFriends";
@@ -9,6 +9,13 @@ function Navbar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
   const [button, setButton] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // State to track authentication status
+
+  useEffect(() => {
+    // Check authentication status on component mount
+    // You can replace this with your actual authentication logic
+    setIsLoggedIn(true); // Set to true for demonstration
+  }, []);
 
   const showButton = () => {
     if (window.innerWidth <= 1000) {
@@ -52,16 +59,19 @@ function Navbar() {
             Friends
           </Link>
         </li>
-        <li className="nav-item">
-          <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
-            Login
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/logout" className="nav-links" onClick={closeMobileMenu}>
-            Logout
-          </Link>
-        </li>
+        {isLoggedIn ? (
+          <li className="nav-item">
+            <Link to="/logout" className="nav-links" onClick={closeMobileMenu}>
+              Logout
+            </Link>
+          </li>
+        ) : (
+          <li className="nav-item">
+            <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
+              Login
+            </Link>
+          </li>
+        )}
         <li className="nav-item">
           <SearchFriends />
         </li>
