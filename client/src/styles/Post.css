@@ -1,6 +1,6 @@
 .postContainer {
   max-width: 800px;
-  max-height: 800px;
+  max-height: fit-content;
   margin: 0 auto;
   padding: 20px;
   display: flex;
@@ -62,7 +62,7 @@ div {
   text-align: center;
   border-radius: 25px;
   padding: 10px;
-  color: whitesmoke;
+  color: black;
   border: 2px solid black;
 }
 
@@ -100,4 +100,36 @@ div {
   max-width: 100%;
   max-height: 200px; /* Set the maximum height as needed */
   margin-top: 10px; /* Add margin for spacing */
+}
+
+.newPost {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #e9e9e9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0);
+}
+
+.newPost h2 {
+  color: black;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  font-style: italic;
+}
+
+.newPost h3 {
+  color: black;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  font-size: 35px;
+  text-decoration: underline;
+}
+
+.newPost p {
+  color: black;
+  margin-bottom: 20px;
 }

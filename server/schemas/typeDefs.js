@@ -1,11 +1,11 @@
-const typeDefs = `
+
+const typeDefs = `#graphql
   type User {
     _id: ID
     firstName: String
     lastName: String
     username: String
     email: String
-    password: String
     avatar: String
     posts: [Post]!
     comments: [Comment]!
@@ -55,7 +55,7 @@ const typeDefs = `
 
   type Mutation {
     addUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!, avatar: String!): Auth
-    login(login: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     updateUser(_id:String!, firstName: String!, lastName: String!, username: String!, email: String!, password: String!, avatar: String!): User
     deleteUser(username: String!): User
     addPost(postTitle: String!, postText: String!, postTag: String!, username: String!): Post

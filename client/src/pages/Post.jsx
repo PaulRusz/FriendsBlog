@@ -1,12 +1,10 @@
+import React, { useState } from "react";
 import "../styles/Post.css";
-import { useState } from "react";
 
 function NewPost() {
-  const [posts, setPosts] = useState([]);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostContent, setNewPostContent] = useState("");
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
+  const [showNewPost, setShowNewPost] = useState(false);
 
   const handleTitleChange = (e) => {
     setNewPostTitle(e.target.value);
@@ -16,36 +14,9 @@ function NewPost() {
     setNewPostContent(e.target.value);
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedImage(file);
-    // Display image preview
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const imagePreview = event.target.result;
-      setPreviewImage(imagePreview);
-    };
-    reader.readAsDataURL(file);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Create a new post object
-    const newPost = {
-      id: posts.length + 1,
-      title: newPostTitle,
-      content: newPostContent,
-      image: selectedImage,
-    };
-
-    // Update the posts state with the new post
-    setPosts([...posts, newPost]);
-
-    // Clear the input fields after submission
-    setNewPostTitle("");
-    setNewPostContent("");
-    setSelectedImage(null);
+    setShowNewPost(true);
   };
 
   return (
@@ -73,35 +44,20 @@ function NewPost() {
             onChange={handleContentChange}
           ></textarea>
 
-          <div className="imageUploadContainer">
-            <input
-              className="imageUpload"
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
-            {previewImage && (
-              <img className="imagePreview" src={previewImage} alt="Preview" />
-            )}
-          </div>
-
-          <div></div>
-
           <button className="submit" type="submit">
             Submit
           </button>
         </form>
       </div>
 
-      {posts.map((post) => (
-        <div key={post.id} className="post">
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-          {post.image && (
-            <img src={URL.createObjectURL(post.image)} alt="Uploaded" />
-          )}
+      {showNewPost && (
+        <div className="newPost">
+          <h2>Post Title:</h2>
+          <h3>{newPostTitle}</h3>
+          <h2>Post Content:</h2>
+          <p>{newPostContent}</p>
         </div>
-      ))}
+      )}
     </div>
   );
 }

@@ -47,24 +47,24 @@ const resolvers = {
       // return User;
     },
 
-    login: async(parent, { login, password }) => {
-      const User = await User.findOne({ 
-        $or: [{ email: login }, { username: login }]
+    login: async(parent, { email, password }) => {
+      const user = await User.findOne({ 
+        $or: [{ email: email }, { username: email }]
       });
 
-      if (!User) {
+      if (!user) {
         throw AuthenticationError;
       }
 
-      const CorrectPassword = await User.isCorrectPassword(password);
+      const CorrectPassword = await user.isCorrectPassword(password);
 
       if (!CorrectPassword) {
         throw AuthenticationError;
       }
 
-      const Token = signToken(User);
+      const token = signToken(user);
 
-      return { Token, User };
+      return { token, user };
     },
 
     updateUser: async (parent, { _id, firstName, lastName, username, email, password, avatar }, context) => {

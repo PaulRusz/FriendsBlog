@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from "./App.jsx";
 // import Home from "../src/pages/Home.jsx";
-import HomePage from '../src/pages/HomePage.jsx';
+import HomePage from "../src/pages/HomePage.jsx";
 import Navbar from "../src/components/Navbar.jsx";
 import NotFound from "../src/pages/NotFound.jsx";
 import Profile from "../src/pages/Profile.jsx";
@@ -45,12 +45,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/signup",
-        element: <SignUp />
-      }
+        element: <SignUp />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <RouterProvider router={router}>
+    <Navbar isLoggedIn={false} /> {/* Pass the authentication status here */}
+  </RouterProvider>
 );
