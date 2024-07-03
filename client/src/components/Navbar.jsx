@@ -1,15 +1,8 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/Navbar.css';
-// import SearchFriends from './SearchFriends';
-// import Home from '../pages/Ho;
-// import HomePage from '../pages/HomePage';
-// import Profile from '../pages/Profile';
-// import Posts from '../pages/Post';
-// import Friends from '../pages/Friends';
-// import Login from '../pages/Login';
-// import Logout from '../pages/Logout';
-import Button from '../components/Button';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/Navbar.css";
+import SearchFriends from "./SearchFriends";
+import Button from "../components/Button";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -24,21 +17,21 @@ function Navbar() {
       setButton(true);
     }
   };
-  
-  window.addEventListener('resize',showButton);
 
+  window.addEventListener("resize", showButton);
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className='navbar-logo'>FriendsBlog
+        <Link to="/" className="navbar-logo">
+          FriendsBlog
           <i className="fab fa-typo3" />
         </Link>
         <div className="menu-icon" onClick={handleClick}>
-          <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+          <i className={click ? "fas fa-times" : "fas fa-bars"} />
         </div>
       </div>
-      <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+      <ul className={click ? "nav-menu active" : "nav-menu"}>
         <li className="nav-item">
           <Link to="/" className="nav-links" onClick={closeMobileMenu}>
             Home
@@ -46,7 +39,7 @@ function Navbar() {
         </li>
         <li className="nav-item">
           <Link to="/profile" className="nav-links" onClick={closeMobileMenu}>
-             Profile
+            Profile
           </Link>
         </li>
         <li className="nav-item">
@@ -56,12 +49,12 @@ function Navbar() {
         </li>
         <li className="nav-item">
           <Link to="/friends" className="nav-links" onClick={closeMobileMenu}>
-           Friends
+            Friends
           </Link>
         </li>
         <li className="nav-item">
           <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
-           Login
+            Login
           </Link>
         </li>
         <li className="nav-item">
@@ -70,12 +63,10 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav-item">
-          <Link to="/searchFriends" className="nav-links" onClick={closeMobileMenu}>
-            Search Friends
-          </Link>          
+          <SearchFriends />
         </li>
       </ul>
-      {button && <Button buttonStyle='btn--outline'>Login</Button>}
+      {button && <Button buttonStyle="btn--outline">Login</Button>}
     </nav>
   );
 }
@@ -130,11 +121,11 @@ export default Navbar;
 //           <li className="'nav-item">
 //           <link to="/searchFriends" className="nav-links" onClick={closeMobileMenu}>
 //             <SearchFriends></SearchFriends>
-//           </link>          
+//           </link>
 //         </li>
 //       </ul>
 //       });
-// }      
+// }
 
 //       {/* <button className="hamburgerMenu" onClick={() => setShowMenu(!showMenu)}>
 //         &#9776;
