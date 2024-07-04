@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../styles/Post.css";
+import { useMutation } from "@apollo/client";
+import { ADD_POST } from "../utils/mutations";
 
 function NewPost() {
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostContent, setNewPostContent] = useState("");
-  const [showNewPost, setShowNewPost] = useState(false);
+  const [createPost, { data }] = useMutation(ADD_POST);
 
   const handleTitleChange = (e) => {
     setNewPostTitle(e.target.value);
@@ -14,9 +16,18 @@ function NewPost() {
     setNewPostContent(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setShowNewPost(true);
+    try {
+      await createPost({
+        variables: {
+          title: newPostTitle,
+          text: newPostContent,
+        },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -50,12 +61,17 @@ function NewPost() {
         </form>
       </div>
 
-      {showNewPost && (
+      {data?.addPost && (
         <div className="newPost">
           <h2>Post Title:</h2>
-          <h3>{newPostTitle}</h3>
+          <div className="postTitle">
+            <h3>{data.addPost.postTitle}</h3>
+          </div>
+
           <h2>Post Content:</h2>
-          <p>{newPostContent}</p>
+          <div className="postContent">
+            <p>{data.addPost.postText}</p>
+          </div>
         </div>
       )}
     </div>

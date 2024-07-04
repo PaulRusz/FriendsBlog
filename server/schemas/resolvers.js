@@ -79,15 +79,19 @@ const resolvers = {
 
     // TODO: Delete User
 
-    addPost: async (parent, { postTitle, postText, postImage, postTags, postAuthor }) => {
-      const Post = await Post.create({ postTitle, postText, postImage, postTags, postAuthor });
+    addPost: async (parent, { postTitle, postText }, {user}) => {
+      if (!user) {
+        throw AuthenticationError;
+      }
+      console.log(user)
+      const post = await Post.create({ postTitle, postText, postAuthor: user.username });
 
       await User.findOneAndUpdate(
-        { username: postAuthor },
+        { _id: user._id },
         { $addToSet: { posts: post._id } }
       );
       
-      return Post;
+      return post;
     },
 
     addComment: async (parent, { postId, commentText, commentAuthor }) => {
