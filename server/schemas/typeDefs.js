@@ -58,7 +58,7 @@ const typeDefs = `#graphql
     login(email: String!, password: String!): Auth
     updateUser(_id:String!, firstName: String!, lastName: String!, username: String!, email: String!, password: String!, avatar: String!): User
     deleteUser(username: String!): User
-    addPost(postTitle: String!, postText: String!, postTag: String!, username: String!): Post
+    addPost(postTitle: String!, postText: String!): Post
     likePost(postId: ID!, userId: ID!): Post
     # unlikePost
     updatePost(postId: ID!, postTitle: String, postText: String): Post

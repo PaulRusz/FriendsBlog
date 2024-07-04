@@ -7,6 +7,7 @@ const path = require('path');
 // Import Two Parts Of GraphQL Schema
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
+const { decode } = require('./utils/auth');
 
 
 const PORT = process.env.PORT || 3001;
@@ -22,7 +23,20 @@ const startApolloServer = async () => {
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
 
-    app.use('/graphql', expressMiddleware(server)); // Use server.getMiddleware() instead of expressMiddleware(server)
+    app.use('/graphql', expressMiddleware(server, { context: async({req}) => {
+        const token = req.headers.authorization?.trim().split( ' ' ).at(-1);
+        if (!token) {
+            return {}
+        }
+        try {
+            const {data:user} = await decode(token)
+            return {
+                user
+            }
+        } catch {
+            return {}
+        }
+    }})); // Use server.getMiddleware() instead of expressMiddleware(server)
     
     // if we're in production, serve client/dist as static assets
     if (process.env.NODE_ENV === 'production') {

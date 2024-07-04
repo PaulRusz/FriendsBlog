@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-const SearchFriends = () => {
+const SearchFriends = ({ setFriends }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -27,6 +26,16 @@ const SearchFriends = () => {
       setSearchResults(data.results);
     } catch (error) {
       console.error("Error searching for friends:", error);
+      // Handle the error based on the specific scenario
+      if (error.message === "Response is not in JSON format") {
+        // Handle non-JSON response
+        console.error(
+          "Response is not in JSON format. Check the backend response."
+        );
+      } else {
+        // Handle other errors
+        console.error("An error occurred while searching for friends:", error);
+      }
     }
   };
 
