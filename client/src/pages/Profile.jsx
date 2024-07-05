@@ -1,26 +1,10 @@
 import "../styles/Profile.css";
 
-import { useState, useEffect } from "react";
-
-import { useQuery } from "@apollo/client";
-
-import { QUERY_ME } from "../utils/queries"
+import { useState } from "react";
 
 function Profile() {
-  
-  const { loading, data } = useQuery(QUERY_ME)
- const [user, setUser ] = useState()
+  const [user, setUser] = useState({});
 
-//   useEffect(() => {
-
-//     if(!loading) {
-
-//       setUser (data.me) 
-//   }
-
-// }, []
-// );
-  
   return (
     <div className="profileContainer">
       <div className="myProfile">
@@ -40,7 +24,6 @@ function Profile() {
         <ul>{/* comments will go here */}</ul>
       </div>
     </div>
-
   );
 }
 
