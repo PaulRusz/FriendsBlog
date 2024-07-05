@@ -7,18 +7,18 @@ const resolvers = {
     users: async () => {
       return User.find().populate('posts').populate('comments').populate('friends');
     },
-    // me: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const userData = await User.findOne({ _id: context.user._id })
-    //       .select('-__v -password')
-    //       .populate('posts')
-    //       .populate('friends');
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('posts')
+          .populate('friends');
 
-    //     return userData;
-    //   }
+        return userData;
+      }
 
-    //   // throw new AuthenticationError('Not logged in');
-    // },
+      // throw new AuthenticationError('Not logged in');
+    },
 
     // Retrieve User By Username
     user: async (parent, { username }) => {
@@ -139,6 +139,33 @@ const resolvers = {
       return post;
     },
 
+    
+
+   ///// rahul latest merge for adding friend also uncommnetd lines 7 thru 21 in this code 
+
+  // ADD Friend mutation to add friend 
+  addFriend: async (parent, { username }, context) => {
+    // create a variable for the user we are tyring to add as friend 
+       const newfriend = await User.findOne({username: username })
+       console.log("context below")
+       console.log(context.user)
+   // find the user who needs a friend 
+   const user = await User.findOneAndUpdate(
+    { _id: context.user._id },
+  // update user's friends list
+    { $addToSet:{friends: newfriend._id}},
+    {new: true}
+  );
+  // console.log("updated newfriend info here")
+  // console.log(newfriend)
+  // console.log("updated user infor here")
+  // console.log(user)
+  return user
+  },
+  //////
+  
+  
+  
     likePost: async (parent, { postId, userId }, context) => {
       const post = await Post.findById(postId);
       if (!post) {
