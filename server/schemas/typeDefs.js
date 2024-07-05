@@ -70,8 +70,6 @@ const typeDefs = `#graphql
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
     updateComment(postId: ID!, commentText: String!, commentId: ID!): Post
     deleteComment(postId: ID!, commentId: ID!): Post
-    addFriend(username: String!): User
-
   }
 `;
 

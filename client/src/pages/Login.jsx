@@ -53,7 +53,7 @@ const Login = (Props) => {
       console.log(data);
       // Navigate To Home Page
       auth.Login(data.login.token);
-      Navigate("/profile");
+      Navigate("/Profile");
     } catch (error) {
       console.error("failed to login", error);
     }
