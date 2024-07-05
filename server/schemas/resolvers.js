@@ -7,18 +7,18 @@ const resolvers = {
     users: async () => {
       return User.find().populate('posts').populate('comments').populate('friends');
     },
-    // me: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const userData = await User.findOne({ _id: context.user._id })
-    //       .select('-__v -password')
-    //       .populate('posts')
-    //       .populate('friends');
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('posts')
+          .populate('friends');
 
-    //     return userData;
-    //   }
+        return userData;
+      }
 
-    //   // throw new AuthenticationError('Not logged in');
-    // },
+      // throw new AuthenticationError('Not logged in');
+    },
 
     // Retrieve User By Username
     user: async (parent, { username }) => {
