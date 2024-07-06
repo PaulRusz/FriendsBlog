@@ -4,8 +4,14 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     // Retrieve Users
-    users: async () => {
-      return User.find().populate('posts').populate('comments').populate('friends');
+    users: async (parent, {
+      username
+    }) => {
+      const query = {}
+      if (username) {
+        query.username = new RegExp(`^${username}`, 'i')
+      }
+      return User.find(query).populate('posts');
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -18,11 +24,6 @@ const resolvers = {
       }
 
       // throw new AuthenticationError('Not logged in');
-    },
-
-    // Retrieve User By Username
-    user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('posts').populate('comments').populate('friends');
     },
 
     // Retrieve All Posts By User
@@ -86,12 +87,12 @@ const resolvers = {
       console.log(user)
       const post = await Post.create({ postTitle, postText, postAuthor: user.username });
 
-      await User.findOneAndUpdate(
+      return User.findOneAndUpdate(
         { _id: user._id },
-        { $addToSet: { posts: post._id } }
+        { $addToSet: { posts: post._id } },
+        { new: true },
       );
       
-      return post;
     },
 
     addComment: async (parent, { postId, commentText, commentAuthor }) => {

@@ -54,6 +54,7 @@ const userSchema = new Schema({
     virtuals: true,
   },
   id: false,
+  timestamp: true
 });
 
 // Retrieve Friends Count

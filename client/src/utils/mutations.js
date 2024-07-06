@@ -29,7 +29,8 @@ export const ADD_POST = gql`
 mutation addPost($title: String!, $text: String!) {
     addPost(postTitle: $title, postText: $text) {
         _id
-        postTitle
-        postText
+        posts{
+            _id
+        }
     }
 }`

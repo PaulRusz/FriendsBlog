@@ -11,6 +11,7 @@ const typeDefs = `#graphql
     comments: [Comment]!
     friends: [User]!
     friendCount: Int
+    createdAt: String
   }
 
   type Post {
@@ -47,8 +48,7 @@ const typeDefs = `#graphql
 
   type Query {
     me: User
-    users: [User]
-    user(username: String!): User
+    users(username: String): [User]
     posts(username: String): [Post]
     post(postId: ID!): Post
   }
@@ -58,7 +58,7 @@ const typeDefs = `#graphql
     login(email: String!, password: String!): Auth
     updateUser(_id:String!, firstName: String!, lastName: String!, username: String!, email: String!, password: String!, avatar: String!): User
     deleteUser(username: String!): User
-    addPost(postTitle: String!, postText: String!): Post
+    addPost(postTitle: String!, postText: String!): User
     likePost(postId: ID!, userId: ID!): Post
     # unlikePost
     updatePost(postId: ID!, postTitle: String, postText: String): Post

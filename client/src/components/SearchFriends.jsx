@@ -1,46 +1,26 @@
+import { useLazyQuery } from "@apollo/client";
 import React, { useState } from "react";
+import { QUERY_USERS } from "../utils/queries";
 
 const SearchFriends = ({ setFriends }) => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchUsers, { data }] = useLazyQuery(QUERY_USERS);
 
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleSearch = async () => {
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const username = formData.get("username");
     try {
-      const response = await fetch(
-        `/api/search-friends?username=${searchQuery}`
-      );
-
-      if (!response.ok) {
-        throw new Error(`Failed to fetch data: ${response.status}`);
-      }
-
-      const contentType = response.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        throw new Error("Response is not in JSON format");
-      }
-
-      const data = await response.json();
-      setSearchResults(data.results);
+      await searchUsers({
+        variables: { username },
+      });
     } catch (error) {
       console.error("Error searching for friends:", error);
-      // Handle the error based on the specific scenario
-      if (error.message === "Response is not in JSON format") {
-        // Handle non-JSON response
-        console.error(
-          "Response is not in JSON format. Check the backend response."
-        );
-      } else {
-        // Handle other errors
-        console.error("An error occurred while searching for friends:", error);
-      }
     }
   };
 
   return (
-    <div
+    <form
+      onSubmit={handleSearch}
       style={{
         display: "flex",
         alignItems: "center",
@@ -51,8 +31,7 @@ const SearchFriends = ({ setFriends }) => {
       <input
         type="text"
         placeholder="Search for Friends"
-        value={searchQuery}
-        onChange={handleInputChange}
+        name="username"
         style={{
           padding: "10px",
           border: "1px solid #ccc",
@@ -63,7 +42,6 @@ const SearchFriends = ({ setFriends }) => {
         }}
       />
       <button
-        onClick={handleSearch}
         style={{
           padding: "10px",
           backgroundColor: "#007bff",
@@ -75,7 +53,7 @@ const SearchFriends = ({ setFriends }) => {
       >
         Search
       </button>
-    </div>
+    </form>
   );
 };
 
