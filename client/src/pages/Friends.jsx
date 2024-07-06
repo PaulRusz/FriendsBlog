@@ -1,9 +1,24 @@
+import { useLazyQuery } from "@apollo/client";
 import React, { useState } from "react";
-import SearchFriends from "../components/SearchFriends"; // Import the SearchFriends component from the components folder
+import { QUERY_USERS } from "../utils/queries";
 import "../styles/Friends.css";
 
 const FriendsPage = () => {
-  const [friends, setFriends] = useState([]);
+  const [searchUsers, { data }] = useLazyQuery(QUERY_USERS);
+  const friends = data?.users; // data.users is an array of users
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const username = formData.get("username");
+    try {
+      await searchUsers({
+        variables: { username },
+      });
+    } catch (error) {
+      console.error("Error searching for friends:", error);
+    }
+  };
 
   return (
     <div className="container">
@@ -11,13 +26,47 @@ const FriendsPage = () => {
         <h1>Friends Page</h1>
       </div>
       <br></br>
-      <SearchFriends setFriends={setFriends} />
+      <form
+        onSubmit={handleSearch}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          maxWidth: "400px",
+          margin: "0 auto",
+        }}
+      >
+        <input
+          type="text"
+          placeholder="Search for Friends"
+          name="username"
+          style={{
+            padding: "10px",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+            backgroundColor: "#f9f9f9",
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+            flex: 1,
+          }}
+        />
+        <button
+          style={{
+            padding: "10px",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          Search
+        </button>
+      </form>
       {/* Render the SearchFriends component */}
       <div className="container2">
-        {friends.map((friend) => (
-          <div key={friend.id}>
+        {friends?.map((friend) => (
+          <div key={friend._id}>
             <img src={friend.profilePic} alt={friend.name} />
-            <a href={`/profile/${friend.username}`}>{friend.name}</a>
+            <a href={`/profile/${friend.username}`}>{friend.username}</a>
           </div>
         ))}
       </div>

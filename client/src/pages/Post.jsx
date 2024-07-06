@@ -65,12 +65,12 @@ function NewPost() {
         <div className="newPost">
           <h2>Post Title:</h2>
           <div className="postTitle">
-            <h3>{data.addPost.postTitle}</h3>
+            <h3>{newPostTitle}</h3>
           </div>
 
           <h2>Post Content:</h2>
           <div className="postContent">
-            <p>{data.addPost.postText}</p>
+            <p>{newPostContent}</p>
           </div>
         </div>
       )}

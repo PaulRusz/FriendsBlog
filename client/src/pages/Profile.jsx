@@ -1,9 +1,16 @@
+import { useQuery } from "@apollo/client";
 import "../styles/Profile.css";
 
 import { useState } from "react";
+import { QUERY_ME } from "../utils/queries";
 
 function Profile() {
-  const [user, setUser] = useState({});
+  const { data } = useQuery(QUERY_ME);
+  const user = data?.me;
+  if (!user) {
+    return <div className="profileContainer">Loading:</div>;
+  }
+  console.log(user);
 
   return (
     <div className="profileContainer">
@@ -16,7 +23,14 @@ function Profile() {
 
       <div className="postContainer">
         <h2>My Posts</h2>
-        <ul>{/* posts will go here */}</ul>
+        <ul>
+          {user.posts.map((post) => (
+            <li key={post._id}>
+              {post.postTitle}
+              <p>{post.postText} </p>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div>
