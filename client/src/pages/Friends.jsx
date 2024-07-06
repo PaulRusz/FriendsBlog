@@ -1,11 +1,13 @@
-import { useLazyQuery } from "@apollo/client";
-import React, { useState } from "react";
-import { QUERY_USERS } from "../utils/queries";
+import { useLazyQuery, useQuery } from "@apollo/client";
+import { QUERY_ME, QUERY_USERS } from "../utils/queries";
 import "../styles/Friends.css";
+import AddFriendBtn from "../components/AddFriend";
 
 const FriendsPage = () => {
-  const [searchUsers, { data }] = useLazyQuery(QUERY_USERS);
-  const friends = data?.users; // data.users is an array of users
+  const meQuery = useQuery(QUERY_ME)
+  const [searchUsers, friendQuery] = useLazyQuery(QUERY_USERS);
+  const user = meQuery.data?.me
+  const friends = friendQuery.data?.users.filter((friend) => friend._id !== user?._id) // data.users is an array of users
 
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -63,10 +65,10 @@ const FriendsPage = () => {
       </form>
       {/* Render the SearchFriends component */}
       <div className="container2">
-        {friends?.map((friend) => (
-          <div key={friend._id}>
-            <img src={friend.profilePic} alt={friend.name} />
-            <a href={`/profile/${friend.username}`}>{friend.username}</a>
+        {user && friends?.map((searchFriend) => (
+          <div key={searchFriend._id}>
+            <a href={`/profile/${searchFriend._id}`}>{searchFriend.username}</a>
+            <AddFriendBtn id={searchFriend._id} isFriend={user.friends.some((friend) => friend._id === searchFriend._id)}/>
           </div>
         ))}
       </div>

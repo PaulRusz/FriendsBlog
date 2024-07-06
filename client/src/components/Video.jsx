@@ -1,9 +1,8 @@
-import React from 'react';
 import Button from './Button'; 
 import '../App.css';
 import '../styles/VideoSection.css';
 import '../pages/HomePage/';
-import video from '../../public/videos/Video.mp4';
+import video from '/Video.mp4';
 
 function Video () {
     return (
@@ -21,9 +20,8 @@ function Video () {
                 Login <i className='far fa-play-circle'></i>
             </Button> 
             </div>
-
         </div>
     )
-};
+}
 
 export default Video;

@@ -10,7 +10,7 @@ const typeDefs = `#graphql
     posts: [Post]!
     comments: [Comment]!
     friends: [User]!
-    friendCount: Int
+    FriendCount: Int
     createdAt: String
   }
 
@@ -49,6 +49,7 @@ const typeDefs = `#graphql
   type Query {
     me: User
     users(username: String): [User]
+    user(id: ID!): User!
     posts(username: String): [Post]
     post(postId: ID!): Post
   }
@@ -70,9 +71,8 @@ const typeDefs = `#graphql
     addComment(postId: ID!, commentText: String!, commentAuthor: String!): Post
     updateComment(postId: ID!, commentText: String!, commentId: ID!): Post
     deleteComment(postId: ID!, commentId: ID!): Post
-
-    addFriend(username: String!): User
-    
+    addFriend(id: ID!): User
+    removeFriend(id: ID!): User
   }
 `;
 

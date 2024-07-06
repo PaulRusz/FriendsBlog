@@ -13,6 +13,12 @@ const resolvers = {
       }
       return User.find(query).populate('posts');
     },
+    
+    user: async (parent, {
+      id
+    }) => {
+      return User.findOne({ _id: id }).populate('posts');
+    },
     me: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
@@ -36,6 +42,9 @@ const resolvers = {
     post: async (parent, { postId }) => {
       return Post.findOne({ _id: postId });
     },
+
+    // TODO: Query Friends
+    // friends: async
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -140,32 +149,40 @@ const resolvers = {
       return post;
     },
 
+    // ADD Friend mutation to add friend 
+    addFriend: async (parent, { id }, context) => {
+      if (id === context.user._id) {
+        throw new Error('Cannot Add Yourself as Friend');
+      }
+      try {
+        const newFriend = await User.findOne({ _id: id })
+        if (!newFriend) {
+          throw new Error('User not found. Cannot add as a friend.');
+        }
+        // Find the user who wants to add a friend
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet:{friends: newFriend._id } },
+          {new: true, populate: {path: 'friends'} }
+        );
+      } catch (error) {
+        throw new Error(`Failed to add friend: ${error.message}`);
+      }
+    },
     
-
-   ///// rahul latest merge for adding friend also uncommnetd lines 7 thru 21 in this code 
-
-  // ADD Friend mutation to add friend 
-  addFriend: async (parent, { username }, context) => {
-    // create a variable for the user we are tyring to add as friend 
-       const newfriend = await User.findOne({username: username })
-       console.log("context below")
-       console.log(context.user)
-   // find the user who needs a friend 
-   const user = await User.findOneAndUpdate(
-    { _id: context.user._id },
-  // update user's friends list
-    { $addToSet:{friends: newfriend._id}},
-    {new: true}
-  );
-  // console.log("updated newfriend info here")
-  // console.log(newfriend)
-  // console.log("updated user infor here")
-  // console.log(user)
-  return user
-  },
-  //////
-  
-  
+    // Remove Friend mutation to add friend 
+    removeFriend: async (parent, { id }, context) => {
+      try {
+        // Find the user who wants to add a friend
+        return User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull:{friends: id } },
+          {new: true, populate: {path: 'friends'} }
+        );
+      } catch (error) {
+        throw new Error(`Failed to remove friend: ${error.message}`);
+      }
+    },
   
     likePost: async (parent, { postId, userId }, context) => {
       const post = await Post.findById(postId);

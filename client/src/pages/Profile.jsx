@@ -1,10 +1,11 @@
 import { useQuery } from "@apollo/client";
 import "../styles/Profile.css";
 
-import { useState } from "react";
-import { QUERY_ME } from "../utils/queries";
+// import { useState } from "react";
+import { QUERY_ME, QUERY_USER } from "../utils/queries";
+import { useParams } from "react-router-dom";
 
-function Profile() {
+function LoggedInUserProfile() {
   const { data } = useQuery(QUERY_ME);
   const user = data?.me;
   if (!user) {
@@ -39,6 +40,50 @@ function Profile() {
       </div>
     </div>
   );
+}
+// Promise.All happen at the same time (other promise to - all settled )**
+function UserProfile({ id }) {
+  const { data } = useQuery(QUERY_USER, { variables: { id } });
+  const user = data?.user;
+  if (!user) {
+    return <div className="profileContainer">Loading:</div>;
+  }
+  console.log(user);
+
+  return (
+    <div className="profileContainer">
+      <div className="myProfile">
+        <h1>Profile</h1>
+        <p>{user.username}</p>
+      </div>
+
+      <div className="postContainer">
+        <h2>My Posts</h2>
+        <ul>
+          {user.posts.map((post) => (
+            <li key={post._id}>
+              {post.postTitle}
+              <p>{post.postText} </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <h2 className="commentContainer">My Comments</h2>
+        <ul>{/* comments will go here */}</ul>
+      </div>
+    </div>
+  );
+}
+
+function Profile() {
+  const { id } = useParams()
+  if (!id) {
+    return <UserProfile id={id}/>
+  } else {
+    return <LoggedInUserProfile />
+  }
 }
 
 export default Profile;

@@ -8,7 +8,7 @@ class AuthService {
     LoggedIn() {
         const Token = this.GetToken();
         // If There's A Token And It Isn't Expired, Return `true`
-        return Token && !this.isTokenExpired(Token) ? true : false;
+        return Token && !this.IsTokenExpired(Token) ? true : false;
     }
 
     IsTokenExpired(Token) {
@@ -18,7 +18,7 @@ class AuthService {
         if (Decoded.exp < Date.now() / 1000) {
             localStorage.removeItem('id_token');
             return true;
-        }
+        } else
         // If Token Isn't Passed Expiration Time, Return `false`
         return false;
     }

@@ -10,7 +10,7 @@ import { setContext } from '@apollo/client/link/context';
 
 import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
-import HomePage from "../src/pages/HomePage";
+// import HomePage from "../src/pages/HomePage";
 // import Video from "./components/Video";
 
 const httpLink = createHttpLink({

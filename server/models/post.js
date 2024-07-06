@@ -29,7 +29,7 @@ const postSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    get: Timestamp => dateFormat(Timestamp)
+    get: Timestamp => dateFormat(Timestamp),
   },
   comments: [
     {
