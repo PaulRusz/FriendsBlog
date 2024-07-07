@@ -1,42 +1,47 @@
-import { useQuery } from "@apollo/client";
-import "../styles/Profile.css";
+import { useQuery } from '@apollo/client'
+import { useParams } from 'react-router-dom'
 
-// import { useState } from "react";
-import { QUERY_ME, QUERY_USER } from "../utils/queries";
-import { useParams } from "react-router-dom";
+import './Profile.css'
+import { QUERY_ME, QUERY_USER } from '../utils/queries'
 
 function LoggedInUserProfile() {
   const { data } = useQuery(QUERY_ME);
-  const user = data?.me;
-  if (!user) {
-    return <div className="profileContainer">Loading:</div>;
+  const MeProfile = data?.me;
+  if (!MeProfile) {
+    return <div className='Profile-Container'>Loading:</div>;
   }
-  console.log(user);
+  console.log(MeProfile);
+
+  const HandlePostClick = (Event) => {
+    Event.currentTarget.classList.toggle('enlargedPost');
+  };
 
   return (
-    <div className="profileContainer">
-      <div className="myProfile">
-        <h1>Profile</h1>
-        <p>Welcome, {user.username}!</p>
-        <p>Email: {user.email}</p>
-        <p>Joined: {user.createdAt}</p>
+    <div className='Profile-Container'>
+      <div className='My-Profile'>
+        <h1 className='Profile-Header'>Profile</h1>
+        <p className='Profile-Info'>Welcome, {MeProfile.username}!</p>
+        <p className='Profile-Info'>Email: {MeProfile.email}</p>
+        <p className='Profile-Info'>Joined: {MeProfile.createdAt}</p>
       </div>
 
-      <div className="postContainer">
-        <h2>My Posts</h2>
-        <ul>
-          {user.posts.map((post) => (
-            <li key={post._id}>
-              {post.postTitle}
-              <p>{post.postText} </p>
+      <div className='Post-Container'>
+        <h2 className='Post-Title'>My Posts</h2>
+        <ul className='Unordered-List Post-List'>
+          {MeProfile.posts.map((post) => (
+            <li className='List Post-Item' key={post._id} onClick={HandlePostClick}>
+              <p>Title:</p>
+              <span className='Post-Title'>{post.postTitle}</span>
+              <p>Post:</p>
+              <p className='Post-Content'>{post.postText}</p>
             </li>
           ))}
         </ul>
       </div>
 
       <div>
-        <h2 className="commentContainer">My Comments</h2>
-        <ul>{/* comments will go here */}</ul>
+        <h2 className='Heading2 Comment-Container'>My Comments</h2>
+        <ul className='Unordered-List'>{/* Comments Will Go Here */}</ul>
       </div>
     </div>
   );
@@ -44,34 +49,34 @@ function LoggedInUserProfile() {
 // Promise.All happen at the same time (other promise to - all settled )**
 function UserProfile({ id }) {
   const { data } = useQuery(QUERY_USER, { variables: { id } });
-  const user = data?.user;
-  if (!user) {
-    return <div className="profileContainer">Loading:</div>;
+  const SearchedProfile = data?.user;
+  if (!SearchedProfile) {
+    return <div className='Profile-Container'>Loading:</div>;
   }
-  console.log(user);
+  console.log(SearchedProfile);
 
   return (
-    <div className="profileContainer">
-      <div className="myProfile">
-        <h1>Profile</h1>
-        <p>{user.username}</p>
+    <div className='Profile-Container'>
+      <div className='My-Profile'>
+        <h1 className='Profile-Heading'>Profile</h1>
+        <p>{SearchedProfile.username}</p>
       </div>
 
-      <div className="postContainer">
-        <h2>My Posts</h2>
-        <ul>
-          {user.posts.map((post) => (
-            <li key={post._id}>
+      <div className='Post-Container'>
+        <h2 className='Heading2'>My Posts</h2>
+        <ul className='Unordered-List'>
+          {SearchedProfile.posts.map((post) => (
+            <li className='List Post-Title-Box' key={post._id}>
               {post.postTitle}
-              <p>{post.postText} </p>
+              <p className='Post-Text-Box'>{post.postText} </p>
             </li>
           ))}
         </ul>
       </div>
 
       <div>
-        <h2 className="commentContainer">My Comments</h2>
-        <ul>{/* comments will go here */}</ul>
+        <h2 className='Heading2 Comment-Container'>My Comments</h2>
+        <ul className='Unordered-List'>{/* Comments Will Go Here */}</ul>
       </div>
     </div>
   );
@@ -80,9 +85,9 @@ function UserProfile({ id }) {
 function Profile() {
   const { id } = useParams()
   if (!id) {
-    return <UserProfile id={id}/>
+    return <UserProfile id={id}/>;
   } else {
-    return <LoggedInUserProfile />
+    return <LoggedInUserProfile />;
   }
 }
 

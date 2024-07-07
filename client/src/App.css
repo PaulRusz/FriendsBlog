@@ -1,11 +1,17 @@
 #root {
     background-color: #333;
 }
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'PT Sans', sans-serif;
-  }
-  
-  
+}
+
+A,
+A:Visited,
+A:Link {
+    text-decoration: none;
+    color: white;
+}

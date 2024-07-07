@@ -1,76 +1,81 @@
-import React, { useState } from "react";
-import "../styles/Post.css";
-import { useMutation } from "@apollo/client";
-import { ADD_POST } from "../utils/mutations";
+import { useState } from 'react'
+import { useMutation } from '@apollo/client'
+
+import './Post.css'
+import { ADD_POST } from '../utils/mutations'
 
 function NewPost() {
-  const [newPostTitle, setNewPostTitle] = useState("");
-  const [newPostContent, setNewPostContent] = useState("");
-  const [createPost, { data }] = useMutation(ADD_POST);
+  const [NewPostTitle, SetNewPostTitle] = useState('');
+  const [NewPostContent, SetNewPostContent] = useState('');
+  const [CreatePost, { data }] = useMutation(ADD_POST);
 
-  const handleTitleChange = (e) => {
-    setNewPostTitle(e.target.value);
+  const HandleTitleChange = (Event) => {
+    SetNewPostTitle(Event.target.value);
   };
 
-  const handleContentChange = (e) => {
-    setNewPostContent(e.target.value);
+  const HandleContentChange = (Event) => {
+    SetNewPostContent(Event.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const HandleSubmit = async (Event) => {
+    Event.preventDefault();
     try {
-      await createPost({
+      await CreatePost({
         variables: {
-          title: newPostTitle,
-          text: newPostContent,
+          title: NewPostTitle,
+          text: NewPostContent,
         },
       });
-    } catch (error) {
-      console.log(error);
+    } catch (Error) {
+      console.log(Error);
     }
   };
 
+  const HandlePostClick = (Event) => {
+    Event.currentTarget.classList.toggle('enlargedPost');
+  };
+
   return (
-    <div className="postContainer">
-      <div className="postHeader">
-        <h1>My Posts</h1>
-        <p>Checkout my posts below</p>
+    <div className='Post-Container'>
+      <div className='Post-Header'>
+        <h1 className='Post-Page-Heading'>My Posts</h1>
+        <p className='Post-Paragraph'>Checkout my posts below</p>
       </div>
 
-      <div className="newPostContainer">
+      <div className='New-Post-Container'>
         <h2>Create a New Post</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={HandleSubmit}>
           <input
-            className="titleContainer"
-            type="text"
-            placeholder="Enter Title"
-            value={newPostTitle}
-            onChange={handleTitleChange}
+            className='Title-Container'
+            type='text'
+            placeholder='Enter Title'
+            value={NewPostTitle}
+            onChange={HandleTitleChange}
           />
 
           <textarea
-            className="contentContainer"
-            placeholder="Enter Content"
-            value={newPostContent}
-            onChange={handleContentChange}
+            className='Content-Container'
+            placeholder='Enter Content'
+            value={NewPostContent}
+            onChange={HandleContentChange}
           ></textarea>
 
-          <button className="submit" type="submit">
+          <button className='Submit-Post-Button' type='submit'>
             Submit
           </button>
         </form>
       </div>
 
       {data?.addPost && (
-        <div className="newPost">
-          <h2>Post Title:</h2>
-          <div className="postTitle">
-            <h3>{newPostTitle}</h3>
+        <div className='New-Post' onClick={HandlePostClick}>
+          <h2 className='Post-Title-Heading'>Post Title:</h2>
+          <div className='Post-Title'>
+            <h3 className='New-Post-Title'>{NewPostTitle}</h3>
           </div>
 
           <h2>Post Content:</h2>
-          <div className="postContent">
-            <p>{newPostContent}</p>
+          <div className='Post-Content'>
+            <p className='Post-Paragraph New-Post-Paragraph'>{NewPostContent}</p>
           </div>
         </div>
       )}

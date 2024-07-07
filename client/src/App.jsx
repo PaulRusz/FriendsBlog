@@ -1,47 +1,45 @@
-import "./App.css";
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom'
+import { setContext } from '@apollo/client/link/context'
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+} from '@apollo/client'
 
-import Navbar from "../src/components/Navbar";
-import Footer from "../src/components/Footer";
-// import HomePage from "../src/pages/HomePage";
-// import Video from "./components/Video";
+import './App.css'
+import Header from './components/Header/Index'
+import Footer from './components/Footer/Index'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
-// Construct request middleware that will attach the JWT token to every request as an `authorization` header
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
+// Request Middleware To Attach JWT Token To Every Request As An `Authorization` Header
+const AuthLink = setContext((_, { headers }) => {
+  // Get Auth Token From Local Storage If It Exists
+  const Token = localStorage.getItem('id_token');
+  // Return Headers To Context So `httpLink` Can Read Them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: Token ? `Bearer ${Token}` : '',
     },
   };
 });
 
-const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  link: authLink.concat(httpLink),
+// Client Executes `AuthLink` Middleware Prior To Making Requests To GraphQL API
+const Client = new ApolloClient({
+  link: AuthLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
-function App() {
+const App = () => {
   return (
     <>
-      <ApolloProvider client={client}>
+      <ApolloProvider client={Client}>
         <div className="flex-column justify-center align-center min-100-vh bg-primary">
-          <Navbar />
+          <Header />
           <Outlet />
           <Footer />
         </div>
