@@ -13,22 +13,28 @@ function LoggedInUserProfile() {
   }
   console.log(user);
 
+  const handlePostClick = (e) => {
+    e.currentTarget.classList.toggle("enlargedPost");
+  };
+
   return (
     <div className="profileContainer">
       <div className="myProfile">
-        <h1>Profile</h1>
-        <p>Welcome, {user.username}!</p>
-        <p>Email: {user.email}</p>
-        <p>Joined: {user.createdAt}</p>
+        <h1 className="profileHeader">Profile</h1>
+        <p className="profileInfo">Welcome, {user.username}!</p>
+        <p className="profileInfo">Email: {user.email}</p>
+        <p className="profileInfo">Joined: {user.createdAt}</p>
       </div>
 
       <div className="postContainer">
-        <h2>My Posts</h2>
-        <ul>
+        <h2 className="postTitle">My Posts</h2>
+        <ul className="postList">
           {user.posts.map((post) => (
-            <li key={post._id}>
-              {post.postTitle}
-              <p>{post.postText} </p>
+            <li key={post._id} className="postItem" onClick={handlePostClick}>
+              <p>Title:</p>
+              <span className="postTitle">{post.postTitle}</span>
+              <p>Post:</p>
+              <p className="postContent">{post.postText}</p>
             </li>
           ))}
         </ul>
@@ -61,9 +67,9 @@ function UserProfile({ id }) {
         <h2>My Posts</h2>
         <ul>
           {user.posts.map((post) => (
-            <li key={post._id}>
+            <li key={post._id} className="postTitleBox">
               {post.postTitle}
-              <p>{post.postText} </p>
+              <p className="postTextBox">{post.postText} </p>
             </li>
           ))}
         </ul>
@@ -78,11 +84,11 @@ function UserProfile({ id }) {
 }
 
 function Profile() {
-  const { id } = useParams()
+  const { id } = useParams();
   if (!id) {
-    return <UserProfile id={id}/>
+    return <UserProfile id={id} />;
   } else {
-    return <LoggedInUserProfile />
+    return <LoggedInUserProfile />;
   }
 }
 

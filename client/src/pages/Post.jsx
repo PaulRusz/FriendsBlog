@@ -30,6 +30,10 @@ function NewPost() {
     }
   };
 
+  const handlePostClick = (e) => {
+    e.currentTarget.classList.toggle("enlargedPost");
+  };
+
   return (
     <div className="postContainer">
       <div className="postHeader">
@@ -62,7 +66,7 @@ function NewPost() {
       </div>
 
       {data?.addPost && (
-        <div className="newPost">
+        <div className="newPost" onClick={handlePostClick}>
           <h2>Post Title:</h2>
           <div className="postTitle">
             <h3>{newPostTitle}</h3>

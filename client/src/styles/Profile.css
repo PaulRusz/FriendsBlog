@@ -7,23 +7,74 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0);
-    margin: 0 auto;
+    margin: 20px auto;
     max-width: 800px;
   }
   
   .myProfile {
-    margin-bottom: 20px;
+    margin: 20px auto;
     padding: 20px;
     border: 2px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: center;
     max-width: 800px;
-    max-height: fit-content;
-  }
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profileHeader {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.profileInfo {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
   
-  .postContainer {
-    margin-bottom: 20px;
-  }
+.postContainer {
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 800px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.postTitle {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-decoration: underline; /* Add underline to the post title */
+  border: none; /* Remove border around the title */
+}
+
+.postList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.postItem {
+  border: 1px solid #ccc; /* Add thin border around each post item */
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.postContent {
+  font-size: 16px;
+  color: #333;
+  margin-top: 5px;
+  border: none; /* Remove border around the post content */
+}
+
+.postItem:not(:last-child) {
+  border-bottom: 1px solid #ccc; /* Add line separator between each post item except the last one */
+}
   
   .commentContainer {
     max-width: fit-content;
@@ -54,4 +105,17 @@
   
   h2 {
     color: #555;
+  }
+
+  .postTitleBox {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .postTextBox {
+    color: #333;
+    font-size: 16px;
   }

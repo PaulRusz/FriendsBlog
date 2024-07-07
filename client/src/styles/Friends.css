@@ -66,3 +66,59 @@ body {
 .friend-details {
     color: #666;
 }
+
+.friendContainer {
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .friendContainer a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .friendContainer a:hover {
+    color: #555;
+  }
+
+  .userNameDisplay {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+    background-color: #778899;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .Add-Friend-Button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 25px;
+  }
+  
+  .Add-Friend-Button:hover {
+    background-color: #0056b3;
+  }
+
+  .friendItem {
+    transition: all 0.3s ease; /* Add smooth transition effect */
+  }
+  
+  .friendItem:hover {
+    transform: scale(1.05); /* Scale the friend item on hover to make it look flashy */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a shadow effect on hover */
+  }

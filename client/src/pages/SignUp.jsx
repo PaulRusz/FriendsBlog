@@ -50,9 +50,12 @@ const SignUp = () => {
       <br />
       <div className="Input-Container">
         {data ? (
-          <p>
-            Success! You may now head <Link to="/">back to the homepage.</Link>
-          </p>
+          <div className="successContainer">
+            <p>
+              Success! You may now head{" "}
+              <Link to="/">back to the homepage.</Link>
+            </p>
+          </div>
         ) : (
           <form onSubmit={HandleFormSubmit}>
             <input

@@ -4,10 +4,12 @@ import "../styles/Friends.css";
 import AddFriendBtn from "../components/AddFriend";
 
 const FriendsPage = () => {
-  const meQuery = useQuery(QUERY_ME)
+  const meQuery = useQuery(QUERY_ME);
   const [searchUsers, friendQuery] = useLazyQuery(QUERY_USERS);
-  const user = meQuery.data?.me
-  const friends = friendQuery.data?.users.filter((friend) => friend._id !== user?._id) // data.users is an array of users
+  const user = meQuery.data?.me;
+  const friends = friendQuery.data?.users.filter(
+    (friend) => friend._id !== user?._id
+  ); // data.users is an array of users
 
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -65,12 +67,25 @@ const FriendsPage = () => {
       </form>
       {/* Render the SearchFriends component */}
       <div className="container2">
-        {user && friends?.map((searchFriend) => (
-          <div key={searchFriend._id}>
-            <a href={`/profile/${searchFriend._id}`}>{searchFriend.username}</a>
-            <AddFriendBtn id={searchFriend._id} isFriend={user.friends.some((friend) => friend._id === searchFriend._id)}/>
-          </div>
-        ))}
+        {user &&
+          friends?.map((searchFriend) => (
+            <div key={searchFriend._id} className="friendContainer friendItem">
+              <p>Username:</p>
+              <a
+                href={`/profile/${searchFriend._id}`}
+                className="userNameDisplay"
+              >
+                {searchFriend.username}
+              </a>
+              <AddFriendBtn
+                id={searchFriend._id}
+                isFriend={user.friends.some(
+                  (friend) => friend._id === searchFriend._id
+                )}
+                className="AddFriendBtn"
+              />
+            </div>
+          ))}
       </div>
     </div>
   );
