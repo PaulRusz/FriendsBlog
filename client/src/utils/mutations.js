@@ -24,7 +24,6 @@ export const ADD_USER = gql`
     }
 `;
 
-
 export const ADD_POST = gql`
 mutation addPost($title: String!, $text: String!) {
     addPost(postTitle: $title, postText: $text) {
@@ -34,3 +33,27 @@ mutation addPost($title: String!, $text: String!) {
         }
     }
 }`
+
+export const ADD_FRIEND = gql`
+    mutation ($id: ID!) {
+        addFriend(id: $id) {
+            _id
+            friends {
+                _id
+            }
+            FriendCount
+        }
+    }
+`;
+
+export const REMOVE_FRIEND = gql`
+    mutation ($id: ID!) {
+        removeFriend(id: $id) {
+            _id
+            friends {
+                _id
+            }
+            FriendCount
+        }
+    }
+`;

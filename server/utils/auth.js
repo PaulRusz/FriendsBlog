@@ -18,4 +18,3 @@ module.exports = {
         return JWT.sign({ data: Payload }, Secret, { expiresIn: Expiration });
     },
 };
-

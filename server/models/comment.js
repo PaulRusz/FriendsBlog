@@ -3,31 +3,43 @@ const dateFormat = require('../utils/dateFormat');
 
 const commentSchema = new Schema(
   {
-    username: {
+    authorId: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      required: true,
+      ref: 'User'
+    },
+    postId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Post',
     },
     commentBody: {
       type: String,
       required: true,
-      maxlength: 200
     },
     createdAt: {
       type: Date,
       default: Date.now,
       get: Timestamp => dateFormat(Timestamp)
-    }
-    // commentId: {
-    //   type: Schema.Types.ObjectId,
-    //   default: () => new Types.ObjectId()
-    // },
+    },
+    lastEditedAt: {
+      type: Date,
+    },
+    likes: {
+      type: [Schema.Types.ObjectId],
+      ref: 'User'
+    },
+    dislikes: {
+      type: [Schema.Types.ObjectId],
+      ref: 'User'
+    },
   },
   {
     toJSON: {
       getters: true
     },
     id: false
-  }
+  },
+  { timestamps: true }
 );
 
 const Comment = model('Comment', commentSchema);

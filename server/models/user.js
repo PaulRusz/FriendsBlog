@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const Bcrypt = require('bcrypt');
+const dateFormat = require('../utils/dateFormat');
 
 const userSchema = new Schema({
   firstName: {
@@ -29,6 +30,15 @@ const userSchema = new Schema({
   },
   avatar: {
     type: String, // Store Path To The Uploaded Image
+    default: '/User-Avatar-Filled-Icon.png',
+  },
+  bio: {
+    type: String,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    get: (Timestamp) => dateFormat(Timestamp),
   },
   posts: [
     {
