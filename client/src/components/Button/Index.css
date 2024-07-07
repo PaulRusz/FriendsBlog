@@ -1,0 +1,41 @@
+:Root {
+    --Color-Primary: #FFF;
+    --Color-Secondary: 242424;
+}
+
+.Btn-Mobile {
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline:none;
+    border:none;
+    cursor:pointer;
+}
+
+.Primary {
+    background-color: var(--Color-Primary);
+    color: var(--Color-Secondary);
+    border: 1px solid var(--Color-Primary);    
+}
+
+.Outline {
+    background-color: transparent;
+    color: var(--Color-Primary);
+    padding: 8px 20px;
+    border: 1px solid var(--Color-Primary);
+    transition: all 0.3s ease-out;
+}
+
+.Medium {
+    padding: 8px 20px;
+    font-size: 20px;
+}
+
+.Large {
+    padding: 12px 26px;
+    font-size: 20px;
+}
+
+.Medium:Hover, .Large:Hover {
+    background: var(--Color-Primary);
+    color: var(--Color-Secondary);
+}

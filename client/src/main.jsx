@@ -1,62 +1,58 @@
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ReactDOM from 'react-dom/client'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import App from "./App.jsx";
-// import Home from "../src/pages/Home.jsx";
-import HomePage from "../src/pages/HomePage.jsx";
-import Navbar from "../src/components/Navbar.jsx";
-import NotFound from "../src/pages/NotFound.jsx";
-import Profile from "../src/pages/Profile.jsx";
-import Post from "../src/pages/Post.jsx";
-import Friends from "../src/pages/Friends.jsx";
-import Login from "../src/pages/Login.jsx";
-import Logout from "../src/pages/Logout.jsx";
-import SignUp from "./pages/SignUp.jsx";
+import App from './App.jsx'
+import NotFound from '../src/pages/NotFound.jsx'
+import Home from './pages/Home.jsx'
+import Friends from '../src/pages/Friends.jsx'
+import Post from '../src/pages/Post.jsx'
+import Profile from '../src/pages/Profile.jsx'
+import Logout from '../src/pages/Logout.jsx'
+import SignUp from './pages/SignUp.jsx'
+import Login from '../src/pages/Login.jsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <NotFound />,
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <Home />,
       },
       {
-        path: "/profile",
+        path: '/search',
+        element: <Friends />,
+      },
+      {
+        path: '/post',
+        element: <Post />,
+      },
+      {
+        path: '/profile',
         element: <Profile />,
         children: [{ 
-          path: ":id",
+          path: ':id',
           element: <Profile />
         }]
       },
       {
-        path: "/post",
-        element: <Post />,
-      },
-      {
-        path: "/friends",
-        element: <Friends />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/logout",
+        path: '/logout',
         element: <Logout />,
       },
       {
-        path: "/signup",
+        path: '/signup',
         element: <SignUp />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
       },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router}>
-    <Navbar isLoggedIn={false} /> {/* Pass the authentication status here */}
-  </RouterProvider>
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <RouterProvider router={router} />
 );

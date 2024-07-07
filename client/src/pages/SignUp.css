@@ -1,0 +1,28 @@
+.Title-Container {
+    color: #FFF;
+}
+.Success-Container {
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #28A745;
+    border-radius: 5px;
+    background-color: #D4EDDA;
+    color: #155724;
+    text-align: center;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Success-Container P {
+    font-size: 18px;
+}
+
+.Success-Container A {
+    color: #155724;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.Success-Container A:Hover {
+    text-decoration: underline;
+}

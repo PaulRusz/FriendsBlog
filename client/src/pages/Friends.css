@@ -1,0 +1,110 @@
+.Friends-Page-Header {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Friends Heading Styling */
+.Friends-Page-Div {
+    background-color: whitesmoke;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 55%;
+    margin: 0 auto;
+}
+
+/* Main Content Area Styling */
+.Search-Container {
+    max-width: 800px;
+    max-height: fit-content;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.Search-Friends-Container {
+    max-width: 800px;
+    max-height: fit-content;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+/* .Searched-User-Card {
+    background-color: #000;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.Searched-Username {
+    font-weight: bold;
+}
+
+.Searched-User-Details {
+    color: #666;
+} */
+
+.Friend-Container-Div {
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #F0F0F0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.Friend-Container A{
+    text-decoration: none;
+    color: #333;
+}
+
+.Friend-Container A:Hover {
+    color: #555;
+}
+
+.Username-Display {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-transform: capitalize;
+    background-color: #778899;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    padding: 20px;
+    margin: 20px;
+}
+
+.Friend-Button {
+    background-color: #007BFF;
+    color: #FFF;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 25px;
+}
+
+.Friend-Button:Hover {
+    background-color: #0056B3;
+}
+
+.Friend-Item {
+    transition: all 0.3s ease; /* Add Smooth Transition Effect */
+}
+
+.Friend-Item:Hover {
+    transform: scale(1.05); /* Scale Friend Item On Hover To Make It Pop */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add Shadow Effect On Hover */
+}

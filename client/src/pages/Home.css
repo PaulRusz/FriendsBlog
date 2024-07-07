@@ -1,4 +1,4 @@
-.Tags-Container {
+/* .Tags-Container {
     top: 50px;
     position: sticky;
     color: #FFF;
@@ -17,15 +17,5 @@
 Li.Tag-Item {
     width: 100%;
     display: flex;
-
     justify-content: center;
-    overflow-x: scroll;
-    overflow-y: hidden;
-}
-
-A,
-A:Visited,
-A:Link {
-    text-decoration: none;
-    color: white;
-}
+} */

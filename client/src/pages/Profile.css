@@ -1,0 +1,121 @@
+.Unordered-List {
+  list-style-type: none;
+  padding: 0;
+}
+
+.List {
+  margin-bottom: 10px;
+}
+
+.Profile-Heading {
+  color: #333;
+}
+
+.Heading2 {
+  color: #555;
+}
+
+.Profile-Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #F0F0F0;
+  border: 1px solid #DDD;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0);
+  margin: 20px auto;
+  max-width: 800px;
+}
+  
+.My-Profile {
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #CCC;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 800px;
+  background-color: #F9F9F9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Profile-Header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.Profile-Info {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.Post-Container {
+  background-color: #F9F9F9;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px auto;
+  max-width: 800px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Post-Title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  text-decoration: underline; /* Add underline to the post title */
+  border: none; /* Remove border around the title */
+}
+
+.Post-List {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Post-Item {
+  border: 1px solid #CCC; /* Add thin border around each post item */
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.Post-Content {
+  font-size: 16px;
+  color: #333;
+  margin-top: 5px;
+  border: none; /* Remove border around the post content */
+}
+
+.Post-Item:Not(:Last-Child) {
+  border-bottom: 1px solid #CCC; /* Add line separator between each post item except the last one */
+}
+  
+.Comment-Container {
+  max-width: fit-content;
+  max-height: fit-content;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #F0F0F0;
+  border: 1px solid #DDD;
+  border-radius: 10px;
+  margin: 15px;
+}
+
+.Post-Title-Box {
+  background-color: #F0F0F0;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.Post-Text-Box {
+  color: #333;
+  font-size: 16px;
+}
