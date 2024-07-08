@@ -33,7 +33,7 @@ div {
 }
 
 .Post-Paragraph {
-  color: whitesmoke;
+  color: #000;
 }
 
 .Post-Title-Container {
@@ -44,6 +44,7 @@ div {
   height: 100%;
   width: 100%;
   text-align: center;
+  color: #000;
   border-radius: 25px;
   height: 35px;
   border: 2px solid #000;
