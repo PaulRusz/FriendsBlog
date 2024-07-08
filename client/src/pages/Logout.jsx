@@ -14,7 +14,7 @@ const Logout = () => {
   return (
     <div className='Main-Container'>
       <div className='Title-Container'>
-        <h1>Logout</h1>
+        <h1 className='Logout-Page-Heading'>Logout</h1>
       </div>
       <br />
       <div className='Input-Container'>
