@@ -1,12 +1,12 @@
-import { createContext, useContext, useReducer } from "react";
-import auth from "../utils/auth";
+import { createContext, useContext, useReducer } from 'react'
+import auth from '../utils/auth'
 
 const defaultValue = { isLoggedIn: auth.LoggedIn() };
 
 const authenticationContext = createContext(defaultValue);
 const AuthenticationActionType = {
-  LOGIN: "LOGIN",
-  LOGOUT: "LOGOUT",
+  LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT',
 };
 export const AuthenticationActions = {
   login: () => {

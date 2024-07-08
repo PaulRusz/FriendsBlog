@@ -1,29 +1,29 @@
-Nav {
-  height: 80px;
+nav {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-}
-  
-.Menu-Container {
-  display: flex;
-  position: absolute;
-  justify-content: space-between;
-  align-items: center;
+  padding: 15px;
+  margin: 0;
+  anchor-name: --Menu-Icon;
   background: linear-gradient(
     90deg,
     rgb(110, 94, 254) 0%,
     rgb(73, 63, 252, 1) 100%
   );
+}
+  
+.Menu-Container {
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+  align-items: center;
   font-size: 1.3rem;
   width: 100%;
-  height: 100px;
 }
 
 .Header-Logo {
   color: #FFF;
-  margin-left: 5px;
   cursor: pointer;
   text-decoration: none;
   display: flex;
@@ -42,6 +42,8 @@ Nav {
 
 .Menu-Icon {
   display: none;
+  height: 30px;
+  width: 20px;
 }
 
 .Header {
@@ -50,10 +52,11 @@ Nav {
   list-style: none;
   text-align: center;
   justify-content: flex-end;
-}
-
-.Header-Item {
-  height: 20px;
+  border: none;
+  background-color: transparent;
+  position: static;
+  column-gap: 20px;
+  position-anchor: --Menu-Icon;
 }
 
 .Header-Link {
@@ -61,13 +64,15 @@ Nav {
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 1rem 1rem;
+  & I{
+    margin-right: 10px; /* Creates Spacing Between Link & Icon */
+  }
+  &:Hover {
+    border-bottom: 4px solid #FFF;
+    transition: all 0.2s ease-out;
+  }
 }
 
-.Header-Link:hover {
-  border-bottom: 4px solid #FFF;
-  transition: all 0.2s ease-out;
-}
 
 @media screen and (max-width: 1000px) {
   .Menu-Icon {
@@ -76,16 +81,23 @@ Nav {
   }
 
   .Header {
-    display: none;
+    display: flex;
+    flex-wrap: nowrap;
     flex-direction: column;
-    position: fixed;
-    top: 80px;
-    left: 0;
     width: 100%;
     background: #242222;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1;
+    position: absolute;
+    top: anchor(bottom);
+    transition: height 1s;
+    height: 0;
+
+    &:popover-open {
+      display: flex;
+      height: 125px; /* Keyword To Automatically Position Height (Or Position With Z-Index) */
+    }
   }
   
   .Header.Active {
@@ -94,7 +106,6 @@ Nav {
   
   .Header-Link {
     text-align: center;
-    padding: 2rem;
     width: 100%;
     display: table;
   }
@@ -103,12 +114,5 @@ Nav {
     background-color: #FFF;
     color: #242424;
     border-radius: 0;
-  }
-
-  .Header-Logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(25%, 50%);
   }
 }

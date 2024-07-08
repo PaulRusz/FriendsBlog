@@ -1,4 +1,5 @@
-div {
+.Post-Container div,
+div.Post-Container {
   margin-bottom: 20px;
 }
 
