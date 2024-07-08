@@ -1,17 +1,14 @@
-.Unordered-List {
+.Profile-Unordered-List {
   list-style-type: none;
   padding: 0;
 }
 
-.List {
-  margin-bottom: 10px;
-}
 
 .Profile-Heading {
   color: #333;
 }
 
-.Heading2 {
+.Profile-Heading2 {
   color: #555;
 }
 
@@ -37,6 +34,9 @@
   max-width: 800px;
   background-color: #F9F9F9;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #5fe6ff;
+  width: 50%;
+  
 }
 
 .Profile-Header {
@@ -52,7 +52,7 @@
   margin-bottom: 15px;
 }
 
-.Post-Container {
+.Profile-Post-Container {
   background-color: #F9F9F9;
   border: 1px solid #CCC;
   border-radius: 5px;
@@ -60,40 +60,57 @@
   margin: 10px auto;
   max-width: 800px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: .5px solid #5fe6ff;
+  width: 55%;
 }
 
-.Post-Title {
+.Profile-Post-Title {
   font-size: 1.5em;
   margin-bottom: 10px;
   text-decoration: underline;
   border: none; 
+  text-align: center;
 }
 
-.Post-List {
+.Profile-Post-List {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  width: 250px;
+  margin: 0 auto;
+  
 }
 
-.Post-Item {
-  border: 1px solid #CCC; 
-  border-radius: 5px;
+.Profile-Post-Item {
+  position: relative; 
+  border: 1px solid black; 
+  border-radius: 5px; 
   padding: 10px;
   margin-bottom: 10px;
 }
 
-.Post-Content {
+.Profile-Post-Title:After {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 10px; 
+}
+
+
+.Profile-Post-Content {
   font-size: 16px;
   color: #333;
   margin-top: 5px;
-  border: none; /* Remove border around the post content */
+  border: none; 
 }
 
 .Post-Item:Not(:Last-Child) {
   border-bottom: 1px solid #CCC; /* Add line separator between each post item except the last one */
 }
   
-.Comment-Container {
+.Profile-Comment-Container {
   max-width: fit-content;
   max-height: fit-content;
   margin-bottom: 20px;
@@ -107,7 +124,7 @@
   margin: 15px;
 }
 
-.Post-Title-Box {
+.Profile-Post-Title-Box {
   background-color: #F0F0F0;
   padding: 20px;
   margin-bottom: 20px;
@@ -115,7 +132,12 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.Post-Text-Box {
-  color: #333;
-  font-size: 16px;
+.Profile-Post-Item {
+  transition: all 0.3s ease; 
 }
+
+.Profile-Post-Item:hover {
+  transform: scale(1.05); 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
