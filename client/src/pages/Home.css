@@ -1,3 +1,56 @@
 .Home-Container {
     color: #FFF;
+    text-align: center;
+}
+
+.Home-Title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+    padding: 20px;
+}
+
+.FriendsBlog {
+    font-size: 3rem;
+    color: #80ebff
+}
+
+.Home-Subtitle {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 0;
+    padding: 20px;
+    text-decoration: overline underline;
+}
+
+.App-Feature-Heading {
+    text-decoration: underline;
+    color: #D97BFF;
+}
+
+.App-Overview,
+.Key-Feature,
+.Call-To-Action-Div {
+  text-align: left;
+  margin: 0 auto; 
+  width: 60%; 
+}
+
+.App-Overview p,
+.Key-Feature p,
+.Call-To-Action-Div p {
+  border: 2px solid #5fe6ff;
+  padding: 10px;
+  border-radius: 5px;
+  width: 90%; 
+  margin: 10px auto;
+}
+
+.App-Overview h3,
+.Key-Feature h3,
+.Call-To-Action-Div h2 {
+  margin-top: 20px;
+}
+.Home-Subtitle {
+  margin-top: 20px;
 }
