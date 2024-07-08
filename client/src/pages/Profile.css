@@ -65,8 +65,8 @@
 .Post-Title {
   font-size: 1.5em;
   margin-bottom: 10px;
-  text-decoration: underline; /* Add underline to the post title */
-  border: none; /* Remove border around the title */
+  text-decoration: underline;
+  border: none; 
 }
 
 .Post-List {
@@ -76,7 +76,7 @@
 }
 
 .Post-Item {
-  border: 1px solid #CCC; /* Add thin border around each post item */
+  border: 1px solid #CCC; 
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;

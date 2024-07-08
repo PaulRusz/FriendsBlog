@@ -11,17 +11,17 @@ div {
   display: flex;
   flex-direction: column; /* Change To Column Layout */
   align-items: center;
-  background-color: #E9E9E9;
-  bordEr: 1px solid #CCC;
+  border: 1px solid #CCC;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0);
+  background-color: whitesmoke;
 
 }
 
 .Post-Header {
   text-align: center;
   margin-bottom: 20px;
-  background-color: #000;
+  background-color: #e9e9e9;
   width: 50%;
   border-radius: 20px;
   padding-top: 10px;
@@ -29,14 +29,14 @@ div {
 }
 
 .Post-Page-Heading {
-  color: whitesmoke;
+  color: black;
 }
 
 .Post-Paragraph {
   color: whitesmoke;
 }
 
-.Title-Container {
+.Post-Title-Container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +49,7 @@ div {
   border: 2px solid #000;
 }
 
-.Content-Container {
+.Post-Content-Container {
   margin-bottom: 20px;
   height: 150px;
   width: 100%;
@@ -71,6 +71,7 @@ div {
 
 .New-Post {
   max-width: 800px;
+  min-width: 250px;
   margin: 20px;
   padding: 20px;
   background-color: #E9E9E9;
@@ -79,40 +80,51 @@ div {
   box-shadow: 0 0 10px rgba(0, 0, 0);
 }
 
+.New-Post-Border {
+  border: 1px solid #333; 
+  border-radius: 15px;
+}
+
 .Post-Title-Heading {
   color: #000;
   max-width: 100%;
   margin: 0 auto;
   padding: 30px;
   font-style: italic;
+  font-size: small;
 }
 
-.New-Post-Title {
+.Post-Content-Heading {
   color: #000;
   max-width: 100%;
   margin: 0 auto;
   padding: 30px;
-  font-size: 35px;
-  text-decoration: underline;
-}
+  font-style: italic;
+  font-size: small;
 
-.New-Post-Paragraph {
-  color: #000;
-  margin-bottom: 20px;
 }
 
 .Post-Title {
   margin-bottom: 20px;
-  border: #333;
+  border: 1px solid #333;
   border-radius: 10px;
+  padding: 10px;
 }
 
 .Post-Content {
   margin-bottom: 20px;
-  border: #333;
+  border: 1px solid #333;
   border-radius: 10px;
-  border: .5px solid #000;
   padding: 10px;
+}
+
+.Post-Paragraph {
+  color: black;
+}
+
+.Line-Separator {
+  margin: 20px;
+  border-bottom: 1px solid #CCC;
 }
 
 .Post-Item {
