@@ -90,7 +90,7 @@
 }
 
 .Profile-Post-Title:After {
-  content: "";
+  content: '';
   display: block;
   width: 100%;
   height: 1px;
